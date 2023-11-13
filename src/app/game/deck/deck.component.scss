@@ -1,0 +1,5 @@
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); /* Responsive grid */
+    gap: 5px; /* Adjust the gap as needed */
+  }
