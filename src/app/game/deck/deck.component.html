@@ -1,6 +1,8 @@
 <div class="game-board">
-    <ng-container *ngFor="let card of cards">
-        <app-card [card]="card" (cardClicked)="flipCard(card)"></app-card>
+    <ng-container *ngFor="let card of boardService.shuffledCards ">
+        <app-card [card]="card" (cardClicked)="flipCard(card)">
+            <!-- <select id="phaseSelect" [(ngModel)]="selectedPhase"></select> -->
+        </app-card>
     </ng-container>
   </div>
   

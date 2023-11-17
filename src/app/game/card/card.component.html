@@ -1,7 +1,7 @@
 <!-- medical-card.component.html -->
-
+<!-- style="background-color: #5669FF;" -->
 <div *ngIf="card" class="card" [ngClass]="{'flipped': card.flipped}" (click)="flipCard()">
-    <div class="front" *ngIf="!card.flipped" style="background-color: #5669FF;">
+    <div class="front" *ngIf="!card.flipped" >
       <p class="centered-text">Mirtas</p>
     </div>
     <div class="back" *ngIf="card.flipped">
