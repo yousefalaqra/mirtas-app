@@ -14,7 +14,7 @@ export class DeckComponent{
 selectedPhase: any;
   constructor(public boardService: BoardService) { 
     //this.boardService.shuffle(this.selectedPhase, 'mobile'); >> the phase will be selected from a list
-    this.boardService.shuffle(1, 'mobile')
+    this.boardService.shuffle(6, 'mobile')
   }
 
   flipCard(card: Card): boolean {
