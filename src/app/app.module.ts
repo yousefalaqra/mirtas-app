@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CardComponent } from './game/card/card.component';
 import { DeckComponent } from './game/deck/deck.component';
 import { ShapeComponent } from './game/card/shape/shape.component';
+import { BoardService } from './services/board.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { ShapeComponent } from './game/card/shape/shape.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [BoardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

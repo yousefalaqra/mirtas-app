@@ -12,36 +12,36 @@
   }
   
   .triangle {
-    background-color: #e0e0e0;
+    background-color: #811111;
     clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
   }
   
   .rectangle {
-    background-color: #e0e0e0;
+    background-color: #3498db;
   }
   
   .diamond {
-    background-color: #e0e0e0;
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    //background-color: #811111;
+    //clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
   }
   
   .square {
-    background-color: #e0e0e0;
+    background-color: #811111;
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
   }
   
   .hexagon {
-    background-color: #e0e0e0;
+    background-color: #811111;
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
   }
   
   .star {
-    background-color: #e0e0e0;
+    background-color: #811111;
     clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
   }
   
   .heart {
-    background-color: #e0e0e0;
+    background-color: #811111;
     position: relative;
     width: 52px;
     height: 45px;
@@ -50,17 +50,17 @@
   }
   
   .pentagon {
-    background-color: #e0e0e0;
+    background-color: #811111;
     clip-path: polygon(50% 0%, 100% 38%, 80% 100%, 20% 100%, 0% 38%);
   }
   
   .octagon {
-    background-color: #e0e0e0;
+    background-color: #811111;
     clip-path: polygon(29% 0%, 71% 0%, 100% 29%, 100% 71%, 71% 100%, 29% 100%, 0% 71%, 0% 29%);
   }
   
   .cross {
-    background-color: #e0e0e0;
+    background-color: #811111;
     position: relative;
     width: 20px;
     height: 70px;
@@ -68,7 +68,7 @@
   }
   
   .arrow {
-    background-color: #e0e0e0;
+    background-color: #811111;
     clip-path: polygon(50% 0%, 100% 29%, 82% 100%, 18% 100%, 0% 29%);
   }
   
@@ -78,12 +78,12 @@
   }
   
   .trapezoid {
-    background-color: #e0e0e0;
+    background-color: #811111;
     clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%);
   }
   
   .oval {
-    background-color: #e0e0e0;
+    background-color: #811111;
     border-radius: 50%;
   }
   
@@ -93,7 +93,7 @@
   }
   
   .teardrop {
-    background-color: #e0e0e0;
+    background-color: #811111;
     clip-path: ellipse(50% 60% at 50% 50%);
   }
   
