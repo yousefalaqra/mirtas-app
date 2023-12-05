@@ -1,8 +1,8 @@
 /* medical-card.component.scss */
 
 .card {
-    width: 100px;
-    height: 150px;
+    width: 80px;
+    height: 85px;
     perspective: 1000px;
     cursor: pointer;
     position: relative;
@@ -49,6 +49,10 @@
       .back {
         transform: rotateY(0deg);
       }
+    }
+
+    &.matched{
+      visibility: hidden;
     }
   }
   

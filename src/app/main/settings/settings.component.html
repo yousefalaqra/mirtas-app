@@ -1,0 +1,14 @@
+<app-header></app-header>
+<div class="settings-container">
+    <h2>Game Settings</h2>
+  
+    <div class="setting-item">
+      <label for="phases">Number of Phases:</label>
+      <input type="number" id="phases" [(ngModel)]="selectedPhases" min="1" max="16" />
+    </div>
+  
+    <div class="button-container">
+      <button class="save-settings-btn" (click)="saveSettings()">Save Settings</button>
+    </div>
+  </div>
+  

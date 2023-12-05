@@ -7,10 +7,29 @@ export interface Card{
 
 
 export interface CardShape{
-    id: string;
+    type: CardShapeType;
     color: string;
 }
 
 export enum CardSate{
     
 }
+
+export enum CardShapeType {
+    Circle = 'circle',
+    Triangle = 'triangle',
+    Square = 'square',
+    Star = 'star',
+    Hexagon = 'hexagon',
+    Pentagon = 'pentagon',
+    Octagon = 'octagon',
+    Heart = 'heart',
+    Rhombus = 'rhombus',
+    Parallelogram = 'parallelogram',
+    Arrow = 'arrow',
+    Crescent = 'crescent',
+    Trapezoid = 'trapezoid',
+    Oval = 'oval',
+    Cross = 'cross',
+    Ring = 'ring',
+  }

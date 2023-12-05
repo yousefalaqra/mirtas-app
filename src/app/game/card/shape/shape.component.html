@@ -1,23 +1,23 @@
 <!-- shape.component.html -->
 
 <div class="shape" [style.background-color]="shape.color">
-    <div [ngSwitch]="shape.id">
-      <div *ngSwitchCase="'circle'" class="circle"></div>
-      <div *ngSwitchCase="'triangle'" class="triangle"></div>
-      <div *ngSwitchCase="'square'" class="square"></div>
-      <div *ngSwitchCase="'star'" class="star"></div>
-      <div *ngSwitchCase="'hexagon'" class="hexagon"></div>
-      <div *ngSwitchCase="'pentagon'" class="pentagon"></div>
-      <div *ngSwitchCase="'octagon'" class="octagon"></div>
-      <div *ngSwitchCase="'heart'" class="heart"></div>
-      <div *ngSwitchCase="'rhombus'" class="rhombus"></div>
-      <div *ngSwitchCase="'parallelogram'" class="parallelogram"></div>
-      <div *ngSwitchCase="'arrow'" class="arrow"></div>
-      <div *ngSwitchCase="'crescent'" class="crescent"></div>
-      <div *ngSwitchCase="'trapezoid'" class="trapezoid"></div>
-      <div *ngSwitchCase="'oval'" class="oval"></div>
-      <div *ngSwitchCase="'cross'" class="cross"></div>
-      <div *ngSwitchCase="'ring'" class="ring"></div>
+    <div [ngSwitch]="shape.type">
+      <div *ngSwitchCase="cardShapeType.Circle" class="circle"></div>
+      <div *ngSwitchCase="cardShapeType.Triangle" class="triangle"></div>
+      <div *ngSwitchCase="cardShapeType.Square" class="square"></div>
+      <div *ngSwitchCase="cardShapeType.Star" class="star"></div>
+      <div *ngSwitchCase="cardShapeType.Hexagon" class="hexagon"></div>
+      <div *ngSwitchCase="cardShapeType.Pentagon" class="pentagon"></div>
+      <div *ngSwitchCase="cardShapeType.Octagon" class="octagon"></div>
+      <div *ngSwitchCase="cardShapeType.Heart" class="heart"></div>
+      <div *ngSwitchCase="cardShapeType.Rhombus" class="rhombus"></div>
+      <div *ngSwitchCase="cardShapeType.Parallelogram" class="parallelogram"></div>
+      <div *ngSwitchCase="cardShapeType.Arrow" class="arrow"></div>
+      <div *ngSwitchCase="cardShapeType.Crescent" class="crescent"></div>
+      <div *ngSwitchCase="cardShapeType.Trapezoid" class="trapezoid"></div>
+      <div *ngSwitchCase="cardShapeType.Oval" class="oval"></div>
+      <div *ngSwitchCase="cardShapeType.Cross" class="cross"></div>
+      <div *ngSwitchCase="cardShapeType.Ring" class="ring"></div>
       <!-- Add cases for more shapes as needed -->
       <div *ngSwitchDefault class="default"></div>
     </div>
