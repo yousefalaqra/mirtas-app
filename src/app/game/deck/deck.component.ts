@@ -11,22 +11,18 @@ import { BoardService } from 'src/app/services/board.service';
 
 
 export class DeckComponent{
-selectedPhase: any;
-  constructor(public boardService: BoardService) { 
-    //this.boardService.shuffle(this.selectedPhase, 'mobile'); >> the phase will be selected from a list
-    this.boardService.shuffle(1, 'mobile')
+  private cards :Array<Card> = [];
+
+  constructor(private boardService: BoardService) { 
+   this.boardService.shuffle(1, 'mobile')
   }
 
-  flipCard(card: Card): boolean {
-    // Implement logic to handle card flipping
-    const currentCard = this.boardService.shuffledCards.find(x => x.id === card.id);
-    console.log(currentCard?.shape.id)
-    if(currentCard){
-      currentCard.flipped = !currentCard.flipped;
-      return true;
-    }{
-      return false;
-    }
+  getDeck() {
+    return this.cards= this.boardService.getDeck();
+  }
+
+  flipCard(card: Card): void {
+    this.boardService.flip(card.id);
   }
 
 }

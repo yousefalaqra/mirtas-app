@@ -1,26 +1,23 @@
 <!-- shape.component.html -->
 
-<div class="shape" [style.background-color]="shape.color">
-    <div [ngSwitch]="shape.id">
-      <div *ngSwitchCase="'circle'" class="circle"></div>
-      <div *ngSwitchCase="'triangle'" class="triangle"></div>
-      <div *ngSwitchCase="'retangle'" class="retangle"></div>
-      <div *ngSwitchCase="'diamond'" class="diamond"></div>
-      <div *ngSwitchCase="'square'" class="square"></div>
-      <div *ngSwitchCase="'hexagon'" class="hexagon"></div>
-      <div *ngSwitchCase="'star'" class="star"></div>
-      <div *ngSwitchCase="'heart'" class="heart"></div>
-      <div *ngSwitchCase="'pentagon'" class="pentagon"></div>
-      <div *ngSwitchCase="'octagon'" class="octagon"></div>
-      <div *ngSwitchCase="'cross'" class="cross"></div>
-      <div *ngSwitchCase="'arrow'" class="arrow"></div>
-      <div *ngSwitchCase="'rhombus'" class="rhombus"></div>
-      <div *ngSwitchCase="'trapezoid'" class="trapezoid"></div>
-      <div *ngSwitchCase="'oval'" class="oval"></div>
-      <div *ngSwitchCase="'crescent'" class="crescent"></div>
-      <div *ngSwitchCase="'teardrop'" class="teardrop"></div>
-      <!-- Add cases for more shapes as needed -->
-      <div *ngSwitchDefault class="default"></div>
-    </div>
+<div class="shape">
+  <div [ngSwitch]="shape.id">
+    <div *ngSwitchCase="ShapeType.Rectangle" class="rectangle" [style.background-color]="shape.color"></div>
+    <div *ngSwitchCase="ShapeType.Circle" class="circle" [style.background-color]="shape.color"></div>
+    <div *ngSwitchCase="ShapeType.Arrow" class="arrow" [style.color]="shape.color"></div>
+    <div *ngSwitchCase="ShapeType.Diamond" class="diamond" [style.color]="shape.color"></div>
+    <div *ngSwitchCase="ShapeType.Oval" class="oval" [style.background-color]="shape.color"></div>
+    <div *ngSwitchCase="ShapeType.Triangle" class="triangle" [style.color]="shape.color"></div>
+    <div *ngSwitchCase="ShapeType.Pentagon" class="pentagon" [style.background-color]="shape.color"></div>
+    <div *ngSwitchCase="ShapeType.Square" class="square" [style.background-color]="shape.color"></div>
+    <div *ngSwitchCase="ShapeType.Star" class="star" [style.background-color]="shape.color"></div>
+    <div *ngSwitchCase="ShapeType.Leaf" class="leaf" [style.background-color]="shape.color"></div>
+    <div *ngSwitchCase="ShapeType.Blob" class="blob" [style.background-color]="shape.color"></div>
+    <div *ngSwitchCase="ShapeType.Egg" class="egg" [style.background-color]="shape.color"></div>
+    <div *ngSwitchCase="ShapeType.Trapezoid" class="trapezoid" [style.color]="shape.color"></div>
+    <div *ngSwitchCase="ShapeType.TriangleDown" class="triangle-down" [style.color]="shape.color"></div>
+    <div *ngSwitchCase="ShapeType.Pacman" class="pacman" [style.color]="shape.color"></div>
+    <div *ngSwitchCase="ShapeType.Rhombus" class="rhombus" [style.background-color]="shape.color"></div>
+    <div *ngSwitchCase="ShapeType.Parallelogram" class="parallelogram" [style.background-color]="shape.color"></div>
   </div>
-  
+</div>
