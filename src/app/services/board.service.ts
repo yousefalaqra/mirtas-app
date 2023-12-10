@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Card, CardShapeType } from '../models/card';
 import { BehaviorSubject, Observable, Subject, delay, tap } from 'rxjs';
 import { GameService } from './game.service';
+import { AudioService } from './audio.service';
 
 export interface IBoard{
   deck$: () => Observable<Array<Card>>;
@@ -21,12 +22,12 @@ export class BoardService implements IBoard{
   private onMatch = new Subject();
   private matching = false;
 
-  constructor(private gameService: GameService) { 
+  constructor(private gameService: GameService, private audioService: AudioService) { 
 
     this.onMatch
     .pipe(
       tap(() => this.matching = true),
-      delay(2000)
+      delay(1500)
     )
     .subscribe(() =>{
       this.checkMatch()
@@ -45,11 +46,22 @@ export class BoardService implements IBoard{
 
     const uniqueCards = 6 + (phase - 1);
   
+    // Generate unique colors
+    // this function to generate the colors instead of the math.random, becuase sometimes gave me colors but are 
+    // not found, as #b168f
+    function getRandomColor(): string {
+      const r = Math.floor(Math.random() * 256);
+      const g = Math.floor(Math.random() * 256);
+      const b = Math.floor(Math.random() * 256);
+      return `rgb(${r}, ${g}, ${b})`;
+    }
+    
+    
     // Generate unique cards
     const newDeck: Array<Card> = [];
     for (let i = 0; i < uniqueCards; i++) {
       const shape = allShapes[i % allShapes.length];
-      const uniqueColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+      const uniqueColor = getRandomColor();
   
       // Add a unique card
       newDeck.push({
@@ -105,6 +117,7 @@ export class BoardService implements IBoard{
     }      
   };
 
+
   private checkMatch(): void{
     if(this.flippedCards.length === 2){
       const firstCard = this.flippedCards[0];
@@ -115,6 +128,7 @@ export class BoardService implements IBoard{
         const currentDeck = this.deck.getValue();
         const updatedDeck = currentDeck.map(x => x.id === firstCard.id || x.id === secondCard.id ? {...x, flipped: false} : x);
         this.deck.next(updatedDeck);
+        //this.audioService.playUnmatchSound();
       }
 
       this.gameService.addPhaseMove();
@@ -134,6 +148,7 @@ export class BoardService implements IBoard{
     const currentDeck  = this.deck.getValue();
     const updatedDeck = currentDeck.map(x => x.shape.type === type  ? {...x, matched: true} : x);
     this.deck.next(updatedDeck);
+    this.audioService.playMatchSound();
   }
 
   private shuffleArray(array: any[]) {

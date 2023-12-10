@@ -21,6 +21,7 @@ export class DeckComponent implements OnInit, OnDestroy {
 
 
   flipCard(card: Card): void {
+    console.log(card.shape)
     this.boardService.reveal(card.id)
   }
 
