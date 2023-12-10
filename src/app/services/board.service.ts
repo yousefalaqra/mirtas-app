@@ -18,7 +18,6 @@ export interface IBoard{
 export class BoardService implements IBoard{
   private deck = new BehaviorSubject<Card[]>([]);
   private flippedCards :Array<Card> = [];
-
   private onMatch = new Subject();
   private matching = false;
 
@@ -41,7 +40,6 @@ export class BoardService implements IBoard{
   
   shuffle(phase: number, device: 'mobile' | 'tablet' | 'desktop'): void {
     const allShapes: CardShapeType[] = Object.values(CardShapeType);
-  
     // Calculate the total number of cards and unique cards based on the phase
 
     const uniqueCards = 6 + (phase - 1);
@@ -100,6 +98,7 @@ export class BoardService implements IBoard{
   
     // Shuffle the deck and emit the updated deck to observers
     this.deck.next(this.shuffleArray(newDeck));
+
   }
   
 
@@ -117,6 +116,15 @@ export class BoardService implements IBoard{
     }      
   };
 
+   revealAll(time: number): void {
+    const currentDeck = this.deck.getValue();
+    const flippedDeck = currentDeck.map(card => ({ ...card, flipped: true }));
+    this.deck.next(flippedDeck);
+    setTimeout(() => {
+      const unflippedDeck = currentDeck.map(card => ({ ...card, flipped: false }));
+      this.deck.next(unflippedDeck);
+    }, time+=time); 
+  }
 
   private checkMatch(): void{
     if(this.flippedCards.length === 2){
