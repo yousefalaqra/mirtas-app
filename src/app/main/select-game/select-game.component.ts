@@ -1,6 +1,6 @@
 // select-game.component.ts
 
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { GameService } from 'src/app/services/game.service';
 
@@ -10,6 +10,7 @@ import { GameService } from 'src/app/services/game.service';
   styleUrls: ['./select-game.component.scss']
 })
 export class SelectGameComponent {
+  @Input() phase = 1;
   games: any[] = [
     {
       name: 'Memory Mastery Challenge',
@@ -53,6 +54,7 @@ export class SelectGameComponent {
   constructor(private gameService: GameService, private router: Router){}
 
   startGame(): void{
+    this.gameService.startPhase(++this.phase)
     this.router.navigate(['/memory-game']);
   }
 }

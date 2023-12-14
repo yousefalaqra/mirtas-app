@@ -18,7 +18,7 @@ export class DeckComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.deckSub = this.boardService.deck$().subscribe(x => this.cards = x);
     this.boardService.shuffle(this.phaseNumber, 'mobile');
-    this.boardService.revealAll(this.flippedtime);
+    this.boardService.revealAll();
   }
 
 

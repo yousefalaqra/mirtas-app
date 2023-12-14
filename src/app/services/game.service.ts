@@ -9,7 +9,7 @@ import { Route, Router } from '@angular/router';
 })
 export class GameService {
  
-  private game = new BehaviorSubject<MemoryGame>({id: 'memory-game', phases: [], totalPhases: 3});
+  private game = new BehaviorSubject<MemoryGame >({id: 'memory-game', phases: [], totalPhases: 6}) ;
 
   private timerObservable = interval(1000);
   private timerSubscription = new Subscription();
@@ -58,7 +58,7 @@ export class GameService {
     this.game.next({...gameValue, totalPhases: total}) 
    } 
 
-   canActviate(): boolean{
+   canActivate(): boolean{
 
     const isPlayerDefined =  this.game.getValue().player ? true : false
 
@@ -69,5 +69,8 @@ export class GameService {
     return isPlayerDefined;
    }
 
-
+   ngOnDestroy(): void {
+    // Unsubscribe from the timer when the service is destroyed
+    this.timerSubscription.unsubscribe();
+  }
 }

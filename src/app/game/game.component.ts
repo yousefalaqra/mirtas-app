@@ -42,7 +42,8 @@ export class GameComponent implements OnInit, OnDestroy {
 
   startNextPhaseHandler(){
     this.gameService.startPhase(++this.currentPhaseNumber);
-    this.phaseEnded = false;    
+    this.phaseEnded = false;   
+    this.router.navigate(['/memory-game']);
   }
 
   endGame(){

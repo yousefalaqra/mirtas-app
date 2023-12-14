@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MemoryGamePhase } from 'src/app/models/game';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-phase-transition',
@@ -14,7 +15,6 @@ export class PhaseTransitionComponent {
   @Output()  endGame = new EventEmitter<void>();
 
   // Add any additional properties or methods as needed
-
   startNextPhase(): void {
     // You can add any logic related to starting the second phase
     // For example, make an API call, update some state, etc.

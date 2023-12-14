@@ -1,24 +1,24 @@
 
 <!-- shape.component.html -->
 
-<div class="shape">
-  <div [ngSwitch]="shape.type">
-    <div *ngSwitchCase="cardShapeType.Rectangle" class="rectangle" [style.background-color]="shape.color"></div>
-    <div *ngSwitchCase="cardShapeType.Circle" class="circle" [style.background-color]="shape.color"></div>
-    <div *ngSwitchCase="cardShapeType.Arrow" class="arrow" [style.color]="shape.color"></div>
-    <div *ngSwitchCase="cardShapeType.Diamond" class="diamond" [style.color]="shape.color"></div>
-    <div *ngSwitchCase="cardShapeType.Oval" class="oval" [style.background-color]="shape.color"></div>
-    <div *ngSwitchCase="cardShapeType.Triangle" class="triangle" [style.color]="shape.color"></div>
-    <div *ngSwitchCase="cardShapeType.Pentagon" class="pentagon" [style.background-color]="shape.color"></div>
-    <div *ngSwitchCase="cardShapeType.Square" class="square" [style.background-color]="shape.color"></div>
-    <div *ngSwitchCase="cardShapeType.Star" class="star" [style.background-color]="shape.color"></div>
-    <div *ngSwitchCase="cardShapeType.Leaf" class="leaf" [style.background-color]="shape.color"></div>
-    <div *ngSwitchCase="cardShapeType.Blob" class="blob" [style.background-color]="shape.color"></div>
-    <div *ngSwitchCase="cardShapeType.Egg" class="egg" [style.background-color]="shape.color"></div>
-    <div *ngSwitchCase="cardShapeType.Trapezoid" class="trapezoid" [style.color]="shape.color"></div>
-    <div *ngSwitchCase="cardShapeType.TriangleDown" class="triangle-down" [style.color]="shape.color"></div>
-    <div *ngSwitchCase="cardShapeType.Pacman" class="pacman" [style.color]="shape.color"></div>
-    <div *ngSwitchCase="cardShapeType.Rhombus" class="rhombus" [style.background-color]="shape.color"></div>
-    <div *ngSwitchCase="cardShapeType.Parallelogram" class="parallelogram" [style.background-color]="shape.color"></div>
+<div class="shape" >
+  <div [ngSwitch]="shape.type" >
+    <div *ngSwitchCase="cardShapeType.Rectangle" [ngClass]="getShapeClasses(shape.type)" [style.background-color]="shape.color"></div>
+    <div *ngSwitchCase="cardShapeType.Circle" [ngClass]="getShapeClasses(shape.type)" [style.background-color]="shape.color"></div>
+    <div *ngSwitchCase="cardShapeType.Arrow" [ngClass]="getShapeClasses(shape.type)" [style.color]="shape.color"></div>
+    <div *ngSwitchCase="cardShapeType.Diamond" [ngClass]="getShapeClasses(shape.type)" [style.color]="shape.color"></div>
+    <div *ngSwitchCase="cardShapeType.Oval" [ngClass]="getShapeClasses(shape.type)" [style.background-color]="shape.color"></div>
+    <div *ngSwitchCase="cardShapeType.Triangle" [ngClass]="getShapeClasses(shape.type)" [style.color]="shape.color"></div>
+    <div *ngSwitchCase="cardShapeType.Pentagon" [ngClass]="getShapeClasses(shape.type)" [style.background-color]="shape.color"></div>
+    <div *ngSwitchCase="cardShapeType.Square" [ngClass]="getShapeClasses(shape.type)" [style.background-color]="shape.color"></div>
+    <div *ngSwitchCase="cardShapeType.Star" [ngClass]="getShapeClasses(shape.type)" [style.background-color]="shape.color"></div>
+    <div *ngSwitchCase="cardShapeType.Leaf" [ngClass]="getShapeClasses(shape.type)" [style.background-color]="shape.color"></div>
+    <div *ngSwitchCase="cardShapeType.Blob" [ngClass]="getShapeClasses(shape.type)" [style.background-color]="shape.color"></div>
+    <div *ngSwitchCase="cardShapeType.Egg" [ngClass]="getShapeClasses(shape.type)" [style.background-color]="shape.color"></div>
+    <div *ngSwitchCase="cardShapeType.Trapezoid" [ngClass]="getShapeClasses(shape.type)" [style.color]="shape.color"></div>
+    <div *ngSwitchCase="cardShapeType.TriangleDown" [ngClass]="getShapeClasses(shape.type)" [style.color]="shape.color"></div>
+    <div *ngSwitchCase="cardShapeType.Pacman" [ngClass]="getShapeClasses(shape.type)" [style.color]="shape.color"></div>
+    <div *ngSwitchCase="cardShapeType.Rhombus" [ngClass]="getShapeClasses(shape.type)" [style.background-color]="shape.color"></div>
+    <div *ngSwitchCase="cardShapeType.Parallelogram" [ngClass]="getShapeClasses(shape.type)" [style.background-color]="shape.color"></div>
   </div>
 </div>

@@ -10,16 +10,21 @@ export class AudioService {
     this.audio = new Audio();
   }
 
+  private setAudioSource(src: string): void {
+    this.audio.src = src;
+    this.audio.load();
+  }
+
   playMatchSound(): void {
-    this.audio.src = '../assets/matchcard-audio.wav';
-    this.audio.load();
+    this.setAudioSource('../assets/matchcard-audio.wav');
     this.audio.play();
   }
-
-  playUnmatchSound(): void {
-    this.audio.src = '../assets/unmatchcard-audio.wav';
-    this.audio.load();
-    this.audio.play();
+  stopAudio(): void {
+    this.audio.pause();
+    this.audio.currentTime = 0;
   }
 
+  releaseResources(): void {
+    this.stopAudio();
+  }
 }

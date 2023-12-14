@@ -17,7 +17,8 @@ export class GameResultsComponent {
   constructor(private gameService: GameService, private router: Router) {
     // Subscribe to the gameService observable
     this.gameSubscription = this.gameService.getGame().subscribe((game: MemoryGame) => {
-      this.memoryGame = game;
+    this.memoryGame = game;
+      console.log(game)
     });
   }
 

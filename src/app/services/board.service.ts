@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy  } from '@angular/core';
 import { Card, CardShapeType } from '../models/card';
-import { BehaviorSubject, Observable, Subject, delay, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, delay, tap, Subscription } from 'rxjs';
 import { GameService } from './game.service';
 import { AudioService } from './audio.service';
+import { getRandomColor } from '../utils/utils';
 
 export interface IBoard{
   deck$: () => Observable<Array<Card>>;
@@ -20,13 +21,15 @@ export class BoardService implements IBoard{
   private flippedCards :Array<Card> = [];
   private onMatch = new Subject();
   private matching = false;
+  onMatchSubscription: Subscription;
+  private revealTimeout: any;
 
   constructor(private gameService: GameService, private audioService: AudioService) { 
-
-    this.onMatch
+    const GAME_MATCH_CHECK_DELAY = 2000;
+    this.onMatchSubscription = this.onMatch
     .pipe(
       tap(() => this.matching = true),
-      delay(1500)
+      delay(GAME_MATCH_CHECK_DELAY)
     )
     .subscribe(() =>{
       this.checkMatch()
@@ -43,18 +46,6 @@ export class BoardService implements IBoard{
     // Calculate the total number of cards and unique cards based on the phase
 
     const uniqueCards = 6 + (phase - 1);
-  
-    // Generate unique colors
-    // this function to generate the colors instead of the math.random, becuase sometimes gave me colors but are 
-    // not found, as #b168f
-    function getRandomColor(): string {
-      const r = Math.floor(Math.random() * 256);
-      const g = Math.floor(Math.random() * 256);
-      const b = Math.floor(Math.random() * 256);
-      return `rgb(${r}, ${g}, ${b})`;
-    }
-    
-    
     // Generate unique cards
     const newDeck: Array<Card> = [];
     for (let i = 0; i < uniqueCards; i++) {
@@ -116,14 +107,17 @@ export class BoardService implements IBoard{
     }      
   };
 
-   revealAll(time: number): void {
+  revealAll(): void {
     const currentDeck = this.deck.getValue();
     const flippedDeck = currentDeck.map(card => ({ ...card, flipped: true }));
     this.deck.next(flippedDeck);
-    setTimeout(() => {
+    if (this.revealTimeout) {
+      clearTimeout(this.revealTimeout);
+    }
+    this.revealTimeout = setTimeout(() => {
       const unflippedDeck = currentDeck.map(card => ({ ...card, flipped: false }));
       this.deck.next(unflippedDeck);
-    }, time+=time); 
+    }, 5000); 
   }
 
   private checkMatch(): void{
@@ -136,7 +130,6 @@ export class BoardService implements IBoard{
         const currentDeck = this.deck.getValue();
         const updatedDeck = currentDeck.map(x => x.id === firstCard.id || x.id === secondCard.id ? {...x, flipped: false} : x);
         this.deck.next(updatedDeck);
-        //this.audioService.playUnmatchSound();
       }
 
       this.gameService.addPhaseMove();
@@ -167,4 +160,13 @@ export class BoardService implements IBoard{
     }
     return array;
   }
+
+  ngOnDestroy() {
+    this.audioService.releaseResources();
+    if (this.revealTimeout) {
+      clearTimeout(this.revealTimeout);
+    }
+  }
+  
 }
+
