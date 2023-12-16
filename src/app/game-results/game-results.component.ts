@@ -23,7 +23,7 @@ export class GameResultsComponent {
       this.memoryGame.phases = [];
       for (const item of game.phases) {
         const currentId = item.id;
-        if (!uniqueIds.has(currentId)) {
+        if (item.endTime && !uniqueIds.has(currentId)) {
           uniqueIds.add(currentId);
           this.memoryGame.phases.push(item);
         }
