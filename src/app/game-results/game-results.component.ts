@@ -20,6 +20,7 @@ export class GameResultsComponent {
     const uniqueIds = new Set<string>();
     this.gameSubscription = this.gameService.getGame().subscribe((game: MemoryGame) => {
       this.memoryGame = this.memoryGame || { id: '', phases: [], totalPhases: 0 };
+      this.memoryGame.player = game.player;
       this.memoryGame.phases = [];
       for (const item of game.phases) {
         const currentId = item.id;
