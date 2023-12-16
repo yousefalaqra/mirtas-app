@@ -54,7 +54,6 @@ export class SelectGameComponent {
   constructor(private gameService: GameService, private router: Router){}
 
   startGame(): void{
-    this.gameService.startPhase(++this.phase)
     this.router.navigate(['/memory-game']);
   }
 }

@@ -10,7 +10,6 @@ import { BoardService } from 'src/app/services/board.service';
 })
 export class DeckComponent implements OnInit, OnDestroy {
   @Input() phaseNumber = 1;
-  @Input() flippedtime = 5000;
   cards :Array<Card> = []
   deckSub = new Subscription();
   constructor(private boardService: BoardService){}
@@ -23,7 +22,6 @@ export class DeckComponent implements OnInit, OnDestroy {
 
 
   flipCard(card: Card): void {
-    console.log(card.shape)
     this.boardService.reveal(card.id)
   }
 

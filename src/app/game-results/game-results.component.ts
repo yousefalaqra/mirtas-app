@@ -3,6 +3,7 @@ import { MemoryGame } from '../models/game';
 import { Subscription } from 'rxjs';
 import { GameService } from '../services/game.service';
 import {  Router } from '@angular/router';
+import { BoardService } from '../services/board.service';
 
 @Component({
   selector: 'app-game-results',
@@ -13,14 +14,23 @@ export class GameResultsComponent {
   memoryGame?: MemoryGame;
   showMoreDetails: boolean[] = [];
   private gameSubscription: Subscription;
-
-  constructor(private gameService: GameService, private router: Router) {
+  
+  constructor(private gameService: GameService, private boardService: BoardService, private router: Router) {
     // Subscribe to the gameService observable
+    const uniqueIds = new Set<string>();
     this.gameSubscription = this.gameService.getGame().subscribe((game: MemoryGame) => {
-    this.memoryGame = game;
-      console.log(game)
+      this.memoryGame = this.memoryGame || { id: '', phases: [], totalPhases: 0 };
+      this.memoryGame.phases = [];
+      for (const item of game.phases) {
+        const currentId = item.id;
+        if (!uniqueIds.has(currentId)) {
+          uniqueIds.add(currentId);
+          this.memoryGame.phases.push(item);
+        }
+      }
     });
   }
+  
 
   get totalTimeTaken(): string {
     // Calculate total time taken based on phase start and end times
@@ -75,7 +85,7 @@ export class GameResultsComponent {
   }
 
   toggleShowMore(index: number): void {
-    this.showMoreDetails[index] = !this.showMoreDetails[index];
+      this.showMoreDetails[index] = !this.showMoreDetails[index];
   }
 
   formatTime(timeInMillis?: number): string {

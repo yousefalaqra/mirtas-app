@@ -34,10 +34,10 @@
     </div>
 
     <!-- Show breakdown analysis for each phase -->
-    <div class="result-item" *ngFor="let phase of memoryGame?.phases; let i = index">
+    <div class="result-item" *ngFor="let phase of memoryGame?.phases ; let i = index">
       <button (click)="toggleShowMore(i)">Show More</button>
       <div *ngIf="showMoreDetails[i]">
-        <p>Phase {{ i + 1 }}:</p>
+        <p> {{ phase.id }}</p>
         <p>Moves: {{ phase.moves }}</p>
         <p>Start Time: {{ phase.startTime | date:'medium' }}</p>
         <p>End Time: {{ phase.endTime | date:'medium' }}</p>
