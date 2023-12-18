@@ -116,6 +116,20 @@ export class BoardService implements IBoard{
     }      
   };
 
+<<<<<<< Updated upstream
+=======
+  revealAll(time:number): void {
+    const currentDeck = this.deck.getValue();
+    const flippedDeck = currentDeck.map(card => ({ ...card, flipped: true }));
+    this.deck.next(flippedDeck);
+
+    setTimeout(() => {
+      const unflippedDeck = currentDeck.map(card => ({ ...card, flipped: false }));
+      this.deck.next(unflippedDeck);
+    }, time+=time); 
+  }
+
+>>>>>>> Stashed changes
   private checkMatch(): void{
     if(this.flippedCards.length === 2){
       const firstCard = this.flippedCards[0];
@@ -157,4 +171,14 @@ export class BoardService implements IBoard{
     }
     return array;
   }
+<<<<<<< Updated upstream
 }
+=======
+
+  ngOnDestroy() {
+    this.audioService.releaseResources();
+  }
+  
+}
+
+>>>>>>> Stashed changes
