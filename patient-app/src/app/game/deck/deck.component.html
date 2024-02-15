@@ -1,0 +1,6 @@
+<div class="game-board">
+    <ng-container *ngFor="let card of cards">
+        <app-card [card]="card" (cardClicked)="flipCard(card)"></app-card>
+    </ng-container>
+</div>
+  

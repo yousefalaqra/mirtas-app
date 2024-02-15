@@ -1,0 +1,54 @@
+<!-- game-results.component.html -->
+
+<div class="game-results-container">
+  <h2>Patient Game Record</h2>
+
+  <!-- Check if any phases are played -->
+  <ng-container *ngIf="memoryGame?.phases?.length; else noPhasesInfo">
+    <div class="result-item">
+      <label>Total Time Taken:</label>
+      <span>{{ totalTimeTaken }}</span>
+    </div>
+
+    <div class="result-item">
+      <label>Number of Moves:</label>
+      <span>{{ numberOfMoves }}</span>
+    </div>
+
+    <div class="result-item">
+      <label>Average Time Per Move:</label>
+      <span>{{ averageTimePerMove }}</span>
+    </div>
+
+    <div class="result-item">
+      <label>Cognitive Performance Feedback:</label>
+      <span>{{ cognitivePerformanceFeedback }}</span>
+    </div>
+
+    <!-- Show patient information -->
+    <div class="patient-info">
+      <p class="patient-name">{{ memoryGame?.player?.name }}</p>
+      <p class="patient-details">
+        Age: {{ memoryGame?.player?.age }}, Gender: {{ memoryGame?.player?.gender }}, Condition: {{ memoryGame?.player?.condition }}
+      </p>
+    </div>
+
+    <!-- Show breakdown analysis for each phase -->
+    <div class="result-item" *ngFor="let phase of memoryGame?.phases; let i = index">
+      <button (click)="toggleShowMore(i)">Show More</button>
+      <div *ngIf="showMoreDetails[i]">
+        <p>Phase {{ i + 1 }}:</p>
+        <p>Moves: {{ phase.moves }}</p>
+        <p>Start Time: {{ phase.startTime | date:'medium' }}</p>
+        <p>End Time: {{ phase.endTime | date:'medium' }}</p>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- Message if no phases played -->
+  <ng-template #noPhasesInfo>
+    <p>No game phases played yet.</p>
+  </ng-template>
+
+  <button (click)="goToMainMenu()" class="back-to-menu-btn">Back to Main Menu</button>
+</div>

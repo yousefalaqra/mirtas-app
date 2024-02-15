@@ -1,0 +1,52 @@
+/* main-menu.component.css */
+
+.main-menu-container {
+    text-align: center;
+    position: relative;
+  }
+  
+  .header-background {
+    background-color: #5669FF; /* Light background color */
+    position: relative;
+    padding: 20px; /* Adjust padding as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border-bottom-left-radius: 50%; /* Create a curved bottom-left corner */
+    border-bottom-right-radius: 50%; /* Create a curved bottom-right corner */
+  }
+  
+  .welcome-message {
+    margin-top: 0; /* Remove default margin for h1 */
+    margin-bottom: 20px; /* Add margin below the welcome message */
+    color: #f2f2f2; /* Doctor SVG color */
+  }
+  
+  .doctor-svg {
+    margin-bottom: 10px; /* Add space between welcome message and doctor SVG */
+  }
+  
+  .menu-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .menu-button {
+    margin: 10px;
+    width: 200px; /* Fixed width */
+    height: 50px; /* Fixed height */
+    font-size: 18px; /* Adjust font size as needed */
+    background-color: #5669FF;
+    color: #fff;
+    border: none;
+    border-radius: 25px; /* Adjust border-radius for rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+  }
+  
+  .menu-button:hover {
+    background-color: #4554b5; /* Darker shade on hover */
+  }

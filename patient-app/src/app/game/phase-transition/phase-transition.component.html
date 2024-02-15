@@ -1,0 +1,27 @@
+<div class="phase-transition-container">
+    <h2>Phase Transition</h2>
+  
+    <div class="transition-info">
+      <div class="info-item">
+        <label>Current Phase:</label>
+        <span>{{ currentPhase.id }}</span>
+      </div>
+  
+      <div class="info-item">
+        <label>Time Taken:</label>
+        <span>{{ currentPhase.startTime | timeTaken: currentPhase.endTime }}</span>
+      </div>
+  
+      <div class="info-item">
+        <label>Number of Moves:</label>
+        <span>{{ currentPhase.moves }}</span>
+      </div>
+    </div>
+  
+    <!-- Button to start the next phase -->
+    <button (click)="startNextPhase()" class="start-next-phase-btn">Start Next Phase</button>
+  
+    <!-- Button to end the game early -->
+    <button (click)="endGameEarly()" class="end-game-early-btn">End Game Early</button>
+  </div>
+  
